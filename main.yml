@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: true
+
+  tasks:
+
+    - name: Create the resource group for managing all the resources
+      azure_rm_resourcegroup:
+        name: samyakResourceGroup
+        location: australiasoutheast
+        tags:
+            testing: testing
+            delete: never
+      register: azure_rg
+
+    # - debug:
+    #     msg={{ azure_rg }}
+
+    # - name: Get facts for one resource group
+    #   azure_rm_resourcegroup_facts:
+    #     name: {{ azure_rg }}
